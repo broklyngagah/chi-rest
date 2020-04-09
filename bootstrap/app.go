@@ -1,7 +1,9 @@
 package bootstrap
 
 import (
+	"chi-rest/lib/logger"
 	"chi-rest/lib/utils"
+	"fmt"
 
 	"github.com/go-chi/chi"
 	"github.com/go-playground/locales/en"
@@ -20,6 +22,7 @@ type App struct {
 	DB        *sqlx.DB
 	Config    utils.Config
 	Validator *Validator
+	Log       logger.Contract
 }
 
 // Validator set validator instance
@@ -52,4 +55,13 @@ func SetupValidator(config utils.Config) *Validator {
 	}
 
 	return &Validator{Driver: validatorDriver, Uni: uni, Translator: trans}
+}
+
+// SetupLogger create new instance of logger pacakge
+func SetupLogger(config utils.Config) logger.Contract {
+	def := config.GetString("log.default")
+	source := fmt.Sprintf("log.%s.source", def)
+	return logger.New(
+		def, source,
+	)
 }

@@ -42,11 +42,14 @@ func setup() error {
 
 	debug = config.GetBool("app.debug")
 	validator := bootstrap.SetupValidator(config)
+	cLog := bootstrap.SetupLogger(config)
+
 	app = &bootstrap.App{
 		Debug:     debug,
 		Config:    config,
 		DB:        mysql.Connect(config.GetString("db.mysql_dsn")),
 		Validator: validator,
+		Log:       cLog,
 	}
 
 	return nil

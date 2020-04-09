@@ -2,4 +2,5 @@ vendor
 config.json
 .realize.yaml
 tmp
-./air
+air
+chi-rest
