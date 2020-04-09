@@ -62,6 +62,6 @@ func SetupLogger(config utils.Config) logger.Contract {
 	def := config.GetString("log.default")
 	source := fmt.Sprintf("log.%s.source", def)
 	return logger.New(
-		def, source,
+		def, config.GetString(source),
 	)
 }

@@ -61,7 +61,7 @@ func (th logs) File() *logrus.Logger {
 		}
 	}
 
-	file, err = os.OpenFile(path, os.O_CREATE|os.O_WRONLY, 0666)
+	file, err = os.OpenFile(path, os.O_CREATE|os.O_WRONLY, 0755)
 	if err == nil {
 		th.Logrus.Out = file
 	} else {
@@ -84,6 +84,8 @@ func (th logs) Sentry() *logrus.Logger {
 		logrus.FatalLevel,
 		logrus.ErrorLevel,
 		logrus.DebugLevel,
+		logrus.InfoLevel,
+		logrus.WarnLevel,
 	})
 
 	hook.Timeout = 10 * time.Second
