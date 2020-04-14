@@ -4,3 +4,5 @@ config.json
 tmp
 air
 chi-rest
+./air
+.air.conf
