@@ -66,7 +66,7 @@ func main() {
 				Name:  "httpapi",
 				Usage: "Run the http 1/1 for API",
 				// Flags:  httpapi.Flags,
-				Action: httpapi.API{app}.Start,
+				Action: httpapi.Boot{app}.Start,
 				// After:  ListenSignal,
 			},
 		},

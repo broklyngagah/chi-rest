@@ -20,7 +20,7 @@ import (
 )
 
 // API ...
-type API struct {
+type Boot struct {
 	*bootstrap.App
 }
 
@@ -39,7 +39,7 @@ type API struct {
 
 // @host http://localhost:3000
 // @BasePath /v1
-func (app API) Start(c *cli.Context) error {
+func (app Boot) Start(c *cli.Context) error {
 	host := app.Config.GetString("app.host")
 	if app.Debug {
 		log.Printf("Running on Debug Mode: On at host [%v]", host)
